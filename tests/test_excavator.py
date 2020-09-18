@@ -2,11 +2,11 @@ import unittest
 from subprocess import call
 from time import sleep
 
-import nuxhash.settings
-from nuxhash.daemon import DONATE_ADDRESS
-from nuxhash.devices.nvidia import enumerate_devices as nvidia_devices
-from nuxhash.download.downloads import make_miners
-from nuxhash.miners.excavator import Excavator
+import naxhash.settings
+from naxhash.daemon import DONATE_ADDRESS
+from naxhash.devices.nvidia import enumerate_devices as nvidia_devices
+from naxhash.download.downloads import make_miners
+from naxhash.miners.excavator import Excavator
 from tests import get_test_devices
 
 
@@ -17,14 +17,14 @@ devices = nvidia_devices()
 class TestExcavator(unittest.TestCase):
 
     def setUp(self):
-        self.configdir = nuxhash.settings.DEFAULT_CONFIGDIR
+        self.configdir = naxhash.settings.DEFAULT_CONFIGDIR
         self.device = devices[0]
 
-        self.settings = nuxhash.settings.DEFAULT_SETTINGS
+        self.settings = naxhash.settings.DEFAULT_SETTINGS
         self.settings['nicehash']['wallet'] = DONATE_ADDRESS
 
-        self.alt_settings = nuxhash.settings.DEFAULT_SETTINGS
-        self.alt_settings['nicehash']['wallet'] = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'
+        self.alt_settings = naxhash.settings.DEFAULT_SETTINGS
+        self.alt_settings['nicehash']['wallet'] = '3NYaR1UiZ5sNdHcBdPJxSUG3LrsyryHfJE'
         self.alt_settings['nicehash']['workername'] = 'nuxhashtest'
 
         self.excavator = Excavator(self.configdir)

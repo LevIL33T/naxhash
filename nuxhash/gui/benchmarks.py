@@ -7,11 +7,11 @@ from wx.lib.newevent import NewCommandEvent
 from wx.lib.pubsub import pub
 from wx.lib.scrolledpanel import ScrolledPanel
 
-from nuxhash import utils
-from nuxhash.devices.nvidia import NvidiaDevice
-from nuxhash.gui import main
-from nuxhash.miners import all_miners
-from nuxhash.settings import DEFAULT_SETTINGS
+from naxhash import utils
+from naxhash.devices.nvidia import NvidiaDevice
+from naxhash.gui import main
+from naxhash.miners import all_miners
+from naxhash.settings import DEFAULT_SETTINGS
 
 
 BENCHMARK_SECS = 60

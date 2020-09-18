@@ -4,9 +4,9 @@ import socket
 import subprocess
 import threading
 
-from nuxhash.devices.nvidia import NvidiaDevice
-from nuxhash.miners import miner
-from nuxhash.utils import get_port
+from naxhash.devices.nvidia import NvidiaDevice
+from naxhash.miners import miner
+from naxhash.utils import get_port
 
 
 ALGORITHMS = [

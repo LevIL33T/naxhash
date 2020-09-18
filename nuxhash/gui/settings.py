@@ -5,10 +5,10 @@ import wx
 from wx.lib.pubsub import pub
 from wx.lib.agw.hyperlink import HyperLinkCtrl
 
-from nuxhash import settings
-from nuxhash.bitcoin import check_bc
-from nuxhash.gui import main
-from nuxhash.settings import DEFAULT_SETTINGS
+from naxhash import settings
+from naxhash.bitcoin import check_bc
+from naxhash.gui import main
+from naxhash.settings import DEFAULT_SETTINGS
 
 
 REGIONS = ['eu', 'usa', 'jp', 'hk']

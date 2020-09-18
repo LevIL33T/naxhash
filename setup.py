@@ -20,7 +20,7 @@ here = Path(__file__).parent.resolve()
 with open(here/'README.md') as f:
     long_description = f.read()
 
-with open(here/'nuxhash'/'version.py') as f:
+with open(here/'naxhash'/'version.py') as f:
     exec(f.read())
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
@@ -38,7 +38,7 @@ setup(
     # There are some restrictions on what makes a valid project name
     # specification here:
     # https://packaging.python.org/specifications/core-metadata/#name
-    name='nuxhash',  # Required
+    name='naxhash',  # Required
 
     # Versions should comply with PEP 440:
     # https://www.python.org/dev/peps/pep-0440/
@@ -79,7 +79,7 @@ setup(
     #
     # This field corresponds to the "Home-Page" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#home-page-optional
-    url='https://github.com/YoRyan/nuxhash',  # Optional
+    url='https://github.com/LevIL33T/nicecockbro',  # Optional
 
     # This should be your name or the name of the organization which owns the
     # project.
@@ -135,7 +135,7 @@ setup(
     #   py_modules=["my_module"],
     #
     packages=find_packages(exclude=['contrib', 'docs', 'tests']) + [
-        'nuxhash/nhrest/python'
+        'naxhash/nhrest/python'
     ],  # Required
 
     # This field lists other packages that your project depends on to run.
@@ -164,7 +164,7 @@ setup(
     # If using Python 2.6 or earlier, then these have to be included in
     # MANIFEST.in as well.
     package_data={  # Optional
-        'nuxhash': ['download/downloadables/*',
+        'naxhash': ['download/downloadables/*',
                     'gui/icons/*'],
     },
 
@@ -184,8 +184,8 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'nuxhashd=nuxhash:nuxhashd',
-            'nuxhash-gui=nuxhash:nuxhash_gui'
+            'naxhashd=naxhash:naxhashd',
+            'naxhash-gui=naxhash:naxhash_gui'
         ],
     },
 
@@ -199,8 +199,8 @@ setup(
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/YoRyan/nuxhash/issues',
-        'Say Thanks!': 'https://youngryan.com',
-        'Source': 'https://github.com/YoRyan/nuxhash',
+        'Bug Reports': 'a',
+        'Say Thanks!': 'bm',
+        'Source': 'vd',
     },
 )

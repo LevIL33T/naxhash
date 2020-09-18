@@ -1,7 +1,7 @@
 import logging
 from collections import defaultdict
 
-from nuxhash.switching.switcher import ProfitSwitcher
+from naxhash.switching.switcher import ProfitSwitcher
 
 
 class NaiveSwitcher(ProfitSwitcher):

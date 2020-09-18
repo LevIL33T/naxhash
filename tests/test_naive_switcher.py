@@ -1,16 +1,16 @@
 from pathlib import Path
 from unittest import main, TestCase
 
-import nuxhash.settings
+import naxhash.settings
 import tests
-from nuxhash.miners.excavator import Excavator
-from nuxhash.switching.naive import NaiveSwitcher
+from naxhash.miners.excavator import Excavator
+from naxhash.switching.naive import NaiveSwitcher
 
 
 class TestNaiveSwitcher(TestCase):
 
     def setUp(self):
-        settings = nuxhash.settings.DEFAULT_SETTINGS
+        settings = naxhash.settings.DEFAULT_SETTINGS
         settings['switching']['threshold'] = 0.5
 
         self.devices = tests.get_test_devices()

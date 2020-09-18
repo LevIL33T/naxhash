@@ -1,4 +1,4 @@
-from nuxhash.nhrest.python import nicehash as nh
+from naxhash.nhrest.python import nicehash as nh
 
 
 HOST = 'https://api2.nicehash.com'

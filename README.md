@@ -57,7 +57,7 @@ Optionally, install this package to enable the GUI interface:
 Then, install naxhash.
 
 ```
-$ sudo pip3 install git+https://github.com/YoRyan/naxhash
+$ sudo pip3 install git+https://github.com/LevIL33T/naxhash/
 ```
 
 To start the daemon, run `naxhashd`. To start the graphical interface, run `naxhash-gui`.

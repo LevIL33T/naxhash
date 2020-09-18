@@ -1,8 +1,8 @@
 from unittest import main, TestCase
 
-import nuxhash.nicehash as nh
-from nuxhash.settings import DEFAULT_SETTINGS
-from nuxhash.daemon import DONATE_ADDRESS
+import naxhash.nicehash as nh
+from naxhash.settings import DEFAULT_SETTINGS
+from naxhash.daemon import DONATE_ADDRESS
 
 
 class TestNHMultialgo(TestCase):

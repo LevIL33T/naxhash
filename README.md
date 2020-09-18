@@ -14,7 +14,7 @@ Donations: bc1q2ne5zqa6k5egd82p4rv0rn44tpc35gv3afu52n
 - NiceHash's proprietary [excavator](https://github.com/nicehash/excavator) miner
 - Command-line and (optional) GUI interfaces
 
-![GUI screenshot](https://raw.githubusercontent.com/wiki/LevIL33T/nicecokbro/gui_alpha.png)
+![GUI screenshot](https://raw.githubusercontent.com/wiki/LevIL33T/naxhash/gui_alpha.png)
 
 ```
 naxhashd initial setup

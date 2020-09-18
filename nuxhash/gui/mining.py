@@ -11,15 +11,15 @@ import wx
 import wx.dataview
 from wx.lib.pubsub import pub
 
-from nuxhash import nicehash, utils
-from nuxhash.bitcoin import check_bc
-from nuxhash.daemon import DONATE_ADDRESS
-from nuxhash.devices.nvidia import NvidiaDevice
-from nuxhash.gui import main
-from nuxhash.miners import all_miners
-from nuxhash.nicehash import get_balances
-from nuxhash.settings import DEFAULT_SETTINGS, EMPTY_BENCHMARKS
-from nuxhash.switching.naive import NaiveSwitcher
+from naxhash import nicehash, utils
+from naxhash.bitcoin import check_bc
+from naxhash.daemon import DONATE_ADDRESS
+from naxhash.devices.nvidia import NvidiaDevice
+from naxhash.gui import main
+from naxhash.miners import all_miners
+from naxhash.nicehash import get_balances
+from naxhash.settings import DEFAULT_SETTINGS, EMPTY_BENCHMARKS
+from naxhash.switching.naive import NaiveSwitcher
 
 
 MINING_UPDATE_SECS = 5
@@ -385,7 +385,7 @@ class MiningThread(threading.Thread):
             logging.warning('This interval will be donation time.')
             donate_settings = deepcopy(self._settings)
             donate_settings['nicehash']['wallet'] = DONATE_ADDRESS
-            donate_settings['nicehash']['workername'] = 'nuxhash'
+            donate_settings['nicehash']['workername'] = 'naxhash'
             for miner in self._miners:
                 miner.settings = donate_settings
             self._scheduler.enter(interval, MiningThread.PROFIT_PRIORITY,

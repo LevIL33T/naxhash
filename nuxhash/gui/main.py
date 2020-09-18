@@ -10,18 +10,18 @@ import wx
 from wx.lib.pubsub import pub
 from wx.lib.newevent import NewCommandEvent
 
-import nuxhash.settings
-from nuxhash.devices.nvidia import enumerate_devices as nvidia_devices
-from nuxhash.download.downloads import make_miners
-from nuxhash.gui.about import AboutScreen
-from nuxhash.gui.benchmarks import BenchmarksScreen
-from nuxhash.gui.mining import MiningScreen
-from nuxhash.gui.settings import SettingsScreen
+import naxhash.settings
+from naxhash.devices.nvidia import enumerate_devices as nvidia_devices
+from naxhash.download.downloads import make_miners
+from naxhash.gui.about import AboutScreen
+from naxhash.gui.benchmarks import BenchmarksScreen
+from naxhash.gui.mining import MiningScreen
+from naxhash.gui.settings import SettingsScreen
 
 
 PADDING_PX = 10
-CONFIG_DIR = nuxhash.settings.DEFAULT_CONFIGDIR
-ICON_PATH = Path(os.path.dirname(__file__))/'icons'/'nuxhash.svg'
+CONFIG_DIR = naxhash.settings.DEFAULT_CONFIGDIR
+ICON_PATH = Path(os.path.dirname(__file__))/'icons'/'naxhash.svg'
 
 PubSubSendEvent, EVT_PUBSUB = NewCommandEvent()
 
@@ -60,12 +60,12 @@ class MainWindow(wx.Frame):
         pub.subscribe(self._OnSettings, 'data.settings')
         pub.subscribe(self._OnBenchmarks, 'data.benchmarks')
 
-        loaded_settings = nuxhash.settings.load_settings(CONFIG_DIR)
-        if loaded_settings == nuxhash.settings.DEFAULT_SETTINGS:
+        loaded_settings = naxhash.settings.load_settings(CONFIG_DIR)
+        if loaded_settings == naxhash.settings.DEFAULT_SETTINGS:
             self._FirstRun()
         pub.sendMessage('data.settings', settings=loaded_settings)
 
-        benchmarks = nuxhash.settings.load_benchmarks(CONFIG_DIR, self._Devices)
+        benchmarks = naxhash.settings.load_benchmarks(CONFIG_DIR, self._Devices)
         pub.sendMessage('data.benchmarks', benchmarks=benchmarks)
 
     def _DownloadMiners(self):
@@ -74,14 +74,14 @@ class MainWindow(wx.Frame):
         if len(to_download) > 0:
             self._DlThread = DownloadThread(self, to_download)
             self._DlThread.start()
-            self._DlProgress = wx.ProgressDialog('nuxhash', '', parent=self)
+            self._DlProgress = wx.ProgressDialog('naxhash', '', parent=self)
             self._DlProgress.ShowModal()
             self._DlProgress.Destroy()
 
     def _FirstRun(self):
         dialog = wx.MessageDialog(
                 self,
-                'Welcome to nuxhash!\n\nSet your NiceHash wallet address and run '
+                'Welcome to naxhash!\n\nSet your NiceHash wallet address and run '
                 'some benchmarks, and then you can start mining.',
                 style=wx.OK)
         dialog.ShowModal()
@@ -105,11 +105,11 @@ class MainWindow(wx.Frame):
 
     def _OnSettings(self, settings):
         logging.info('Saving user settings.')
-        nuxhash.settings.save_settings(CONFIG_DIR, settings)
+        naxhash.settings.save_settings(CONFIG_DIR, settings)
 
     def _OnBenchmarks(self, benchmarks):
         logging.info('Saving user benchmarks.')
-        nuxhash.settings.save_benchmarks(CONFIG_DIR, benchmarks)
+        naxhash.settings.save_benchmarks(CONFIG_DIR, benchmarks)
 
     def _ProbeDevices(self):
         return nvidia_devices()
@@ -143,7 +143,7 @@ def main():
     sys.excepthook = excepthook
 
     app = wx.App(False)
-    frame = MainWindow(None, title='nuxhash')
+    frame = MainWindow(None, title='naxhash')
     frame.Show()
     app.MainLoop()
 

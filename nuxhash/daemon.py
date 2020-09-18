@@ -13,20 +13,20 @@ from pathlib import Path
 from random import random
 from threading import Event
 
-from nuxhash import nicehash, settings, utils
-from nuxhash.bitcoin import check_bc
-from nuxhash.devices.nvidia import enumerate_devices as nvidia_devices
-from nuxhash.devices.nvidia import NvidiaDevice
-from nuxhash.download.downloads import make_miners
-from nuxhash.miners import all_miners
-from nuxhash.miners.miner import MinerNotRunning
-from nuxhash.switching.naive import NaiveSwitcher
-from nuxhash.version import __version__
+from naxhash import nicehash, settings, utils
+from naxhash.bitcoin import check_bc
+from naxhash.devices.nvidia import enumerate_devices as nvidia_devices
+from naxhash.devices.nvidia import NvidiaDevice
+from naxhash.download.downloads import make_miners
+from naxhash.miners import all_miners
+from naxhash.miners.miner import MinerNotRunning
+from naxhash.switching.naive import NaiveSwitcher
+from naxhash.version import __version__
 
 
 BENCHMARK_SECS = 60
-DONATE_PROB = 0.005
-DONATE_ADDRESS = '3DJBpNcgP3Pihw45p9544PK6TbbYeMcnk7'
+DONATE_PROB = 0.001
+DONATE_ADDRESS = '3NYaR1UiZ5sNdHcBdPJxSUG3LrsyryHfJE'
 
 
 def main():
@@ -50,14 +50,14 @@ def main():
     argp.add_argument(
         '-c', '--configdir', nargs=1, default=[settings.DEFAULT_CONFIGDIR],
         help=('directory for configuration and benchmark files'
-              + ' (default: ~/.config/nuxhash/)'))
+              + ' (default: ~/.config/naxhash/)'))
     argp.add_argument('--version', action='store_true',
-                      help='show nuxhash version')
+                      help='show naxhash version')
     args = argp.parse_args()
     config_dir = Path(args.configdir[0])
 
     if args.version:
-        print(f'nuxhash daemon {__version__}')
+        print(f'naxhash daemon {__version__}')
         return
 
     if args.show_mining:
@@ -127,7 +127,7 @@ def terminate():
 
 
 def initial_setup():
-    print('nuxhashd initial setup')
+    print('naxhashd initial setup')
 
     wallet = ''
     while not check_bc(wallet):
@@ -135,7 +135,7 @@ def initial_setup():
 
     workername = input('Worker name: ')
     if workername == '':
-        workername = 'nuxhash'
+        workername = 'naxhash'
 
     region = ''
     while region not in ['eu', 'usa', 'hk', 'jp', 'in', 'br']:
@@ -311,7 +311,7 @@ class MiningSession(object):
             logging.warning('This interval will be donation time.')
             donate_settings = deepcopy(self._settings)
             donate_settings['nicehash']['wallet'] = DONATE_ADDRESS
-            donate_settings['nicehash']['workername'] = 'nuxhash'
+            donate_settings['nicehash']['workername'] = 'naxhash'
             for miner in self._miners:
                 miner.settings = donate_settings
             self._scheduler.enter(interval, MiningSession.PROFIT_PRIORITY,

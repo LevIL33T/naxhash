@@ -21,11 +21,11 @@ class TestExcavator(unittest.TestCase):
         self.device = devices[0]
 
         self.settings = naxhash.settings.DEFAULT_SETTINGS
-        self.settings['nicehash']['wallet'] = DONATE_ADDRESS
+        self.settings['noicehash']['wallet'] = DONATE_ADDRESS
 
         self.alt_settings = naxhash.settings.DEFAULT_SETTINGS
-        self.alt_settings['nicehash']['wallet'] = '3NYaR1UiZ5sNdHcBdPJxSUG3LrsyryHfJE'
-        self.alt_settings['nicehash']['workername'] = 'nuxhashtest'
+        self.alt_settings['noicehash']['wallet'] = '3NYaR1UiZ5sNdHcBdPJxSUG3LrsyryHfJE'
+        self.alt_settings['noicehash']['workername'] = 'nuxhashtest'
 
         self.excavator = Excavator(self.configdir)
         self.excavator.settings = self.settings

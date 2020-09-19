@@ -1,4 +1,4 @@
-import nicehash
+import noicehash
 
 # For testing purposes use api-test.nicehash.com. Register here: https://test.nicehash.com
 
@@ -27,7 +27,7 @@ import nicehash
 # PUBLIC FUNCTIONS
 
 # Create public api object
-public_api = nicehash.public_api(host, True)
+public_api = noicehash.public_api(host, True)
 
 # Get all algorithms
 algorithms = public_api.get_algorithms()
@@ -66,7 +66,7 @@ print(multialgo_info)
 # PRIVATE FUNCTIONS
 
 # Create private api object
-private_api = nicehash.private_api(host, organisation_id, key, secret, True)
+private_api = noicehash.private_api(host, organisation_id, key, secret, True)
 
 # Get balance for all currencies
 my_accounts = private_api.get_accounts()

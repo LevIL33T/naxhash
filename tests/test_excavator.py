@@ -3,7 +3,7 @@ from subprocess import call
 from time import sleep
 
 import naxhash.settings
-from naxhash.daemon import DONATE_ADDRESS
+from naxhash.damen import DONATE_ADDRESS
 from naxhash.devices.nvidia import enumerate_devices as nvidia_devices
 from naxhash.download.downloads import make_miners
 from naxhash.miners.excavator import Excavator

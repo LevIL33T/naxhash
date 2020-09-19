@@ -1,5 +1,5 @@
 import com.google.gson.*;
-import com.nicehash.connect.Api;
+import com.noicehash.connect.Api;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -57,7 +57,7 @@ class SettingsScreen(wx.Panel):
         add_valign(basicSizer, wx.StaticText(basicForm, label='Region'))
         self._Region = ChoiceByValue(
                 basicForm, choices=REGIONS,
-                fallbackChoice=settings.DEFAULT_SETTINGS['nicehash']['region'])
+                fallbackChoice=settings.DEFAULT_SETTINGS['noicehash']['region'])
         self.Bind(wx.EVT_CHOICE, self.OnControlChange, self._Region)
         add_valign(basicSizer, self._Region)
 
@@ -169,13 +169,13 @@ class SettingsScreen(wx.Panel):
 
     def OnSave(self, event):
         new_settings = deepcopy(self._Settings)
-        new_settings['nicehash']['wallet'] = self._Wallet.GetValue()
-        new_settings['nicehash']['workername'] = self._Worker.GetValue()
-        new_settings['nicehash']['region'] = REGIONS[self._Region.GetSelection()]
-        new_settings['nicehash']['api_organization'] = \
+        new_settings['noicehash']['wallet'] = self._Wallet.GetValue()
+        new_settings['noicehash']['workername'] = self._Worker.GetValue()
+        new_settings['noicehash']['region'] = REGIONS[self._Region.GetSelection()]
+        new_settings['noicehash']['api_organization'] = \
                 self._Organization.GetValue()
-        new_settings['nicehash']['api_key'] = self._ApiKey.GetValue()
-        new_settings['nicehash']['api_secret'] = self._ApiSecret.GetValue()
+        new_settings['noicehash']['api_key'] = self._ApiKey.GetValue()
+        new_settings['noicehash']['api_secret'] = self._ApiSecret.GetValue()
         new_settings['switching']['interval'] = self._Interval.GetValue()
         new_settings['switching']['threshold'] = self._Threshold.GetValue()/100.0
         new_settings['gui']['units'] = UNITS[self._Units.GetSelection()]
@@ -185,12 +185,12 @@ class SettingsScreen(wx.Panel):
         self._Save.Disable()
 
     def _Reset(self):
-        self._Wallet.SetValue(self._Settings['nicehash']['wallet'])
-        self._Worker.SetValue(self._Settings['nicehash']['workername'])
-        self._Region.SetValue(self._Settings['nicehash']['region'])
-        self._Organization.SetValue(self._Settings['nicehash']['api_organization'])
-        self._ApiKey.SetValue(self._Settings['nicehash']['api_key'])
-        self._ApiSecret.SetValue(self._Settings['nicehash']['api_secret'])
+        self._Wallet.SetValue(self._Settings['noicehash']['wallet'])
+        self._Worker.SetValue(self._Settings['noicehash']['workername'])
+        self._Region.SetValue(self._Settings['noicehash']['region'])
+        self._Organization.SetValue(self._Settings['noicehash']['api_organization'])
+        self._ApiKey.SetValue(self._Settings['noicehash']['api_key'])
+        self._ApiSecret.SetValue(self._Settings['noicehash']['api_secret'])
         self._Interval.SetValue(self._Settings['switching']['interval'])
         self._Threshold.SetValue(self._Settings['switching']['threshold']*100)
         self._Units.SetValue(self._Settings['gui']['units'])

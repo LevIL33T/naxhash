@@ -3,7 +3,7 @@ from unittest import main, TestCase
 
 import naxhash.settings
 import tests
-from naxhash.miners.excavator import Excavator
+from naxhash.miners.cavator import Excavator
 from naxhash.switching.naive import NaiveSwitcher
 
 

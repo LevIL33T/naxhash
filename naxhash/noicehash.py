@@ -1,4 +1,4 @@
-from naxhash.nhrest.python import nicehash as nh
+from naxhash.nhrest.python import noicehash as nh
 
 
 HOST = 'https://api2.nicehash.com'
@@ -16,12 +16,12 @@ def stratums(nx_settings):
     response = api.get_algorithms()
     ports = {algorithm['algorithm'].lower(): algorithm['port']
              for algorithm in response['miningAlgorithms']}
-    region = nx_settings['nicehash']['region']
+    region = nx_settings['noicehash']['region']
     return {algorithm: f'{algorithm}.{region}.nicehash.com:{port}'
             for algorithm, port in ports.items()}
 
 def get_balances(nx_settings):
-    address = nx_settings['nicehash']['wallet']
+    address = nx_settings['noicehash']['wallet']
 
     response = nh.public_api(HOST).request(
             'GET', f'/main/api/v2/mining/external/{address}/rigs/', '', None)
@@ -31,9 +31,9 @@ def get_balances(nx_settings):
     else:
         try:
             response = nh.private_api(HOST,
-                                      nx_settings['nicehash']['api_organization'],
-                                      nx_settings['nicehash']['api_key'],
-                                      nx_settings['nicehash']['api_secret']) \
+                                      nx_settings['noicehash']['api_organization'],
+                                      nx_settings['noicehash']['api_key'],
+                                      nx_settings['noicehash']['api_secret']) \
                     .get_accounts_for_currency('BTC')
         except:
             wallet = None

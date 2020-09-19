@@ -10,7 +10,7 @@ DEFAULT_CONFIGDIR = Path(os.path.expanduser('~/.config/naxhash'))
 SETTINGS_FILENAME = 'settings.conf'
 BENCHMARKS_FILENAME = 'benchmarks.json'
 DEFAULT_SETTINGS = {
-    'nicehash': {
+    'noicehash': {
         'wallet': '',
         'workername': 'naxhash',
         'region': 'usa',
@@ -40,7 +40,7 @@ def read_settings_from_file(fd):
     parser = configparser.ConfigParser()
     parser.read_file(fd)
     methods = {
-        'nicehash': {
+        'noicehash': {
             'wallet': parser.get,
             'workername': parser.get,
             'region': parser.get,

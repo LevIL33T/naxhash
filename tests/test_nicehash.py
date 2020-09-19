@@ -1,6 +1,6 @@
 from unittest import main, TestCase
 
-import naxhash.nicehash as nh
+import naxhash.noicehash as nh
 from naxhash.settings import DEFAULT_SETTINGS
 from naxhash.damen import DONATE_ADDRESS
 
@@ -9,7 +9,7 @@ class TestNHMultialgo(TestCase):
 
     def setUp(self):
         self.settings = DEFAULT_SETTINGS
-        self.settings['nicehash']['region'] = 'eu'
+        self.settings['noicehash']['region'] = 'eu'
 
     def test_payrate(self):
         mbtc_per_hash = nh.simplemultialgo_info(self.settings)

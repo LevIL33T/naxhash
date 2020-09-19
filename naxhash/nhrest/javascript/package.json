@@ -1,12 +1,12 @@
 {
   "name": "example-app-node",
   "version": "0.0.1",
-  "description": "NiceHash Example App",
+  "description": "NoiceHash Example App",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "NiceHash",
+  "author": "NoiceHash",
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^3.1.9-1",

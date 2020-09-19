@@ -1,5 +1,5 @@
 def naxhashd():
-    from naxhash.daemon import main
+    from naxhash.damen import main
     main()
 
 def naxhash_gui():

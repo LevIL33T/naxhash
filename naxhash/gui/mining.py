@@ -11,13 +11,13 @@ import wx
 import wx.dataview
 from wx.lib.pubsub import pub
 
-from naxhash import nicehash, utils
+from naxhash import noicehash, utils
 from naxhash.bitcoin import check_bc
 from naxhash.damen import DONATE_ADDRESS
 from naxhash.devices.nvidia import NvidiaDevice
 from naxhash.gui import main
 from naxhash.miners import all_miners
-from naxhash.nicehash import get_balances
+from naxhash.noicehash import get_balances
 from naxhash.settings import DEFAULT_SETTINGS, EMPTY_BENCHMARKS
 from naxhash.switching.naive import NaiveSwitcher
 
@@ -45,7 +45,7 @@ class MiningScreen(wx.Panel):
 
         pub.subscribe(self._OnClose, 'app.close')
 
-        pub.subscribe(self._OnNewBalances, 'nicehash.balances')
+        pub.subscribe(self._OnNewBalances, 'noicehash.balances')
         pub.subscribe(self._OnMiningStatus, 'mining.status')
 
         sizer = wx.BoxSizer(orient=wx.VERTICAL)
@@ -114,7 +114,7 @@ class MiningScreen(wx.Panel):
     def _UpdateMining(self):
         if (self._Benchmarks is not None
             and not self._Benchmarking
-            and check_bc(self._Settings['nicehash']['wallet'])
+            and check_bc(self._Settings['noicehash']['wallet'])
             and any(self._Benchmarks[device] != {} for device in self._Devices)):
             if self._Thread:
                 # TODO: Update mining thread more gracefully?
@@ -134,16 +134,16 @@ class MiningScreen(wx.Panel):
         self._UpdateBalances()
 
     def _UpdateBalances(self):
-        address = self._Settings['nicehash']['wallet']
+        address = self._Settings['noicehash']['wallet']
         if check_bc(address):
             def do_requests(address, target):
                 wallet, unpaid = get_balances(self._Settings)
-                main.sendMessage(target, 'nicehash.balances',
+                main.sendMessage(target, 'noicehash.balances',
                                  wallet=wallet, unpaid=unpaid)
             thread = threading.Thread(target=do_requests, args=(address, self))
             thread.start()
         else:
-            pub.sendMessage('nicehash.balances', wallet=None, unpaid=None)
+            pub.sendMessage('noicehash.balances', wallet=None, unpaid=None)
 
     def OnStartStop(self, event):
         if not self._Thread:
@@ -320,10 +320,10 @@ class MiningThread(threading.Thread):
         stratums = None
         while stratums is None:
             try:
-                payrates = nicehash.simplemultialgo_info(self._settings)
-                stratums = nicehash.stratums(self._settings)
+                payrates = noicehash.simplemultialgo_info(self._settings)
+                stratums = noicehash.stratums(self._settings)
             except Exception as err:
-                logging.warning(f'NiceHash stats: {err}, retrying in 5 seconds')
+                logging.warning(f'NoiceHash stats: {err}, retrying in 5 seconds')
                 time.sleep(5)
             else:
                 self._payrates = payrates
@@ -349,9 +349,9 @@ class MiningThread(threading.Thread):
     def _switch_algos(self):
         # Get profitability information from NiceHash.
         try:
-            ret_payrates = nicehash.simplemultialgo_info(self._settings)
+            ret_payrates = noicehash.simplemultialgo_info(self._settings)
         except Exception as err:
-            logging.warning(f'NiceHash stats: {err}')
+            logging.warning(f'NoiceHash stats: {err}')
         else:
             self._payrates = (ret_payrates, datetime.now())
 
@@ -384,8 +384,8 @@ class MiningThread(threading.Thread):
         if not self._settings['donate']['optout'] and random() < DONATE_PROB:
             logging.warning('This interval will be donation time.')
             donate_settings = deepcopy(self._settings)
-            donate_settings['nicehash']['wallet'] = DONATE_ADDRESS
-            donate_settings['nicehash']['workername'] = 'naxhash'
+            donate_settings['noicehash']['wallet'] = DONATE_ADDRESS
+            donate_settings['noicehash']['workername'] = 'naxhash'
             for miner in self._miners:
                 miner.settings = donate_settings
             self._scheduler.enter(interval, MiningThread.PROFIT_PRIORITY,

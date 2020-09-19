@@ -1,7 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.nicehash.connect.Api;
+import com.noicehash.connect.Api;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -6,7 +6,7 @@ import naxhash.settings
 from naxhash.damen import DONATE_ADDRESS
 from naxhash.devices.nvidia import enumerate_devices as nvidia_devices
 from naxhash.download.downloads import make_miners
-from naxhash.miners.excavator import Excavator
+from naxhash.miners.cavator import Excavator
 from tests import get_test_devices
 
 
@@ -27,21 +27,21 @@ class TestExcavator(unittest.TestCase):
         self.alt_settings['noicehash']['wallet'] = '3NYaR1UiZ5sNdHcBdPJxSUG3LrsyryHfJE'
         self.alt_settings['noicehash']['workername'] = 'nuxhashtest'
 
-        self.excavator = Excavator(self.configdir)
-        self.excavator.settings = self.settings
-        self.equihash = next(a for a in self.excavator.algorithms
+        self.cavator = Excavator(self.configdir)
+        self.cavator.settings = self.settings
+        self.equihash = next(a for a in self.cavator.algorithms
                              if a.algorithms == ['equihash'])
-        self.neoscrypt = next(a for a in self.excavator.algorithms
+        self.neoscrypt = next(a for a in self.cavator.algorithms
                               if a.algorithms == ['neoscrypt'])
 
         make_miners(self.configdir)
-        self.excavator.load()
+        self.cavator.load()
 
     def tearDown(self):
-        self.excavator.unload()
+        self.cavator.unload()
 
     def _get_workers(self):
-        response = self.excavator.server.send_command('worker.list', [])
+        response = self.cavator.server.send_command('worker.list', [])
         def algorithms(worker): return [a['name'] for a in worker['algorithms']]
         return [{ 'device_uuid': w['device_uuid'],
                   'algorithms': algorithms(w) } for w in response['workers']]

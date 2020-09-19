@@ -69,9 +69,9 @@ class ExcavatorServer(object):
         return None
     @settings.setter
     def settings(self, v):
-        self._subscription = (v['nicehash']['region'],
-                              v['nicehash']['wallet'],
-                              v['nicehash']['workername'])
+        self._subscription = (v['noicehash']['region'],
+                              v['noicehash']['wallet'],
+                              v['noicehash']['workername'])
         if v['excavator_miner']['listen'] == '':
             self._address = ('127.0.0.1', self._randport)
         else:

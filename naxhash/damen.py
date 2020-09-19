@@ -57,7 +57,7 @@ def main():
     config_dir = Path(args.configdir[0])
 
     if args.version:
-        print(f'naxhash daemon {__version__}')
+        print(f'naxhash damen {__version__}')
         return
 
     if args.show_mining:

@@ -1,4 +1,4 @@
-package com.nicehash.connect;
+package com.noicehash.connect;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.http.HttpHeaders;

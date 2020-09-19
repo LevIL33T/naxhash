@@ -36,6 +36,6 @@ class Downloadable(object):
 
 def make_miners(config_dir):
     return [
-        Downloadable(config_dir, 'excavator', 'excavator.sh', 'NiceHash excavator')
+        Downloadable(config_dir, 'excavator', 'excavator.sh', 'NoiceHash excavator')
         ]
 

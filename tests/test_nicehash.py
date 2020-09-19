@@ -2,7 +2,7 @@ from unittest import main, TestCase
 
 import naxhash.nicehash as nh
 from naxhash.settings import DEFAULT_SETTINGS
-from naxhash.daemon import DONATE_ADDRESS
+from naxhash.damen import DONATE_ADDRESS
 
 
 class TestNHMultialgo(TestCase):

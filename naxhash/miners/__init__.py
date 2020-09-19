@@ -1,4 +1,4 @@
-from naxhash.miners.excavator import Excavator
+from naxhash.miners.cavator import Excavator
 
 
 all_miners = [Excavator]

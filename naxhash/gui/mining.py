@@ -13,7 +13,7 @@ from wx.lib.pubsub import pub
 
 from naxhash import nicehash, utils
 from naxhash.bitcoin import check_bc
-from naxhash.daemon import DONATE_ADDRESS
+from naxhash.damen import DONATE_ADDRESS
 from naxhash.devices.nvidia import NvidiaDevice
 from naxhash.gui import main
 from naxhash.miners import all_miners

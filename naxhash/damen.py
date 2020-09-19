@@ -13,7 +13,7 @@ from pathlib import Path
 from random import random
 from threading import Event
 
-from naxhash import nicehash, settings, utils
+from naxhash import noicehash, settings, utils
 from naxhash.bitcoin import check_bc
 from naxhash.devices.nvidia import enumerate_devices as nvidia_devices
 from naxhash.devices.nvidia import NvidiaDevice
@@ -33,7 +33,7 @@ def main():
     sys.excepthook = excepthook
 
     argp = argparse.ArgumentParser(
-        description='Sell GPU hash power on the NiceHash market.')
+        description='Sell GPU hash power on the NoiceHash market.')
     argp_benchmark = argp.add_mutually_exclusive_group()
     argp_benchmark.add_argument(
         '--benchmark-all', action='store_true',
@@ -74,11 +74,11 @@ def main():
     nx_benchmarks = settings.load_benchmarks(config_dir, all_devices)
 
     # If no wallet configured, do initial setup prompts.
-    if nx_settings['nicehash']['wallet'] == '':
+    if nx_settings['noicehash']['wallet'] == '':
         wallet, workername, region = initial_setup()
-        nx_settings['nicehash']['wallet'] = wallet
-        nx_settings['nicehash']['workername'] = workername
-        nx_settings['nicehash']['region'] = region
+        nx_settings['noicehash']['wallet'] = wallet
+        nx_settings['noicehash']['workername'] = workername
+        nx_settings['noicehash']['region'] = region
 
     # Download and initialize miners.
     downloadables = make_miners(config_dir)
@@ -246,14 +246,14 @@ class MiningSession(object):
 
     def run(self):
         # Initialize miners.
-        logging.info('Querying NiceHash for miner connection information...')
+        logging.info('Querying NoiceHash for miner connection information...')
         payrates = stratums = None
         while payrates is None:
             try:
-                payrates = nicehash.simplemultialgo_info(self._settings)
-                stratums = nicehash.stratums(self._settings)
+                payrates = noicehash.simplemultialgo_info(self._settings)
+                stratums = noicehash.stratums(self._settings)
             except Exception as err:
-                logging.warning(f'NiceHash stats: {err}, retrying in 5 seconds')
+                logging.warning(f'NoiceHash stats: {err}, retrying in 5 seconds')
                 time.sleep(5)
             else:
                 self._payrates = (payrates, datetime.now())
@@ -276,7 +276,7 @@ class MiningSession(object):
     def _switch_algos(self):
         # Get profitability information from NiceHash.
         try:
-            ret_payrates = nicehash.simplemultialgo_info(self._settings)
+            ret_payrates = noicehash.simplemultialgo_info(self._settings)
         except Exception as err:
             logging.warning(f'NiceHash stats: {err}')
         else:
@@ -310,8 +310,8 @@ class MiningSession(object):
         if not self._settings['donate']['optout'] and random() < DONATE_PROB:
             logging.warning('This interval will be donation time.')
             donate_settings = deepcopy(self._settings)
-            donate_settings['nicehash']['wallet'] = DONATE_ADDRESS
-            donate_settings['nicehash']['workername'] = 'naxhash'
+            donate_settings['noicehash']['wallet'] = DONATE_ADDRESS
+            donate_settings['noicehash']['workername'] = 'naxhash'
             for miner in self._miners:
                 miner.settings = donate_settings
             self._scheduler.enter(interval, MiningSession.PROFIT_PRIORITY,
